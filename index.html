@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Us Private Dining — Charlotte, NC | justuscharlotte.com</title>
+<meta name="description" content="Just Us brings a fully staffed, fully staged fine dining experience to wherever your story lives — your home, a meaningful place, or somewhere we scout together. Private chef, personal waiter, candlelit table, for two. Charlotte, NC.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #14100c;
+    --bg-soft: #1c160f;
+    --bg-card: #1f1810;
+    --ink: #f4ede0;
+    --ink-soft: #b6a991;
+    --ink-faint: #8a7d68;
+    --gold: #c9a227;
+    --gold-light: #e7cb73;
+    --line: rgba(201,162,39,0.25);
+    --line-soft: rgba(244,237,224,0.08);
+    --max: 1180px;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+
+  ::selection{ background: var(--gold); color: var(--bg); }
+
+  :focus-visible{
+    outline: 1.5px solid var(--gold-light);
+    outline-offset: 4px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow{
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .divider{
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px auto;
+    opacity: 0.7;
+  }
+  .divider.left{ margin: 24px 0; }
+
+  /* ---------- Ambient glow (signature element) ---------- */
+  .glow{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 45%, rgba(201,162,39,0.16), transparent 70%);
+    animation: breathe 9s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .glow{ animation: none; }
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 0;
+    background: linear-gradient(to bottom, rgba(20,16,12,0.92), transparent);
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
+    pointer-events: none;
+  }
+  header.visible{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  header.solid{
+    background: rgba(20,16,12,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .nav-logo{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .btn{
+    display:inline-block;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 14px 30px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .btn:hover{
+    background: var(--gold);
+    color: #14100c;
+  }
+  .btn.small{ padding: 10px 22px; font-size: 11px; }
+  .btn.filled{
+    background: var(--gold);
+    color: #14100c;
+  }
+  .btn.filled:hover{
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 140px 24px 80px;
+    overflow: hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+    filter: brightness(0.55) saturate(0.88);
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background: rgba(20,16,12,0.58);
+  }
+  .hero-inner{ position:relative; z-index:1; max-width: 760px; }
+  .hero h1, .hero .tagline, .hero .eyebrow{ text-shadow: 0 4px 30px rgba(0,0,0,0.45); }
+  .hero .eyebrow{ display:block; margin-bottom: 22px; }
+  .hero h1{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(64px, 11vw, 132px);
+    line-height: 1;
+    color: var(--ink);
+  }
+  .hero p.tagline{
+    font-family: var(--serif);
+    font-size: clamp(19px, 2.6vw, 25px);
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 8px;
+    margin-bottom: 36px;
+  }
+  .hero-actions{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+
+  .scroll-cue{
+    position:absolute;
+    bottom: 38px;
+    left:50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--gold) 40%, transparent);
+    animation: cue 2.2s ease-in-out infinite;
+  }
+  @keyframes cue{
+    0%,100%{ opacity:0.2; }
+    50%{ opacity:1; }
+  }
+
+  /* ---------- Section base ---------- */
+  section{ position: relative; padding: 130px 0; }
+  .center{ text-align:center; }
+  .statement{
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .statement h2{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.18;
+    color: var(--ink);
+  }
+  .statement h2 em{
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .lede{
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--ink-soft);
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  .section-head{ max-width: 640px; margin: 0 auto 64px; text-align:center; }
+  .section-head h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(30px, 4.4vw, 46px);
+    margin-top: 14px;
+    color: var(--ink);
+  }
+  .section-head p{ color: var(--ink-soft); margin-top: 16px; font-size: 16px; }
+
+  /* ---------- Premise ---------- */
+  .premise{ background: var(--bg-soft); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+
+  /* ---------- Where your story is ---------- */
+  .story-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .story-grid h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(30px, 4.2vw, 46px);
+    line-height:1.15;
+    margin-top: 14px;
+  }
+  .story-grid p{ color: var(--ink-soft); margin-top: 20px; font-size: 16px; max-width: 480px; }
+  .location-types{ margin-top: 28px; display:flex; flex-direction:column; gap:14px; }
+  .location-types li{
+    display:flex; gap:14px; align-items:flex-start;
+    color: var(--ink-soft); font-size: 15px;
+  }
+  .location-types li .dot{
+    width:5px; height:5px; border-radius:50%; background: var(--gold);
+    margin-top: 9px; flex-shrink:0;
+  }
+  .location-types b{ color: var(--ink); font-weight: 500; }
+
+  .frame{
+    aspect-ratio: 4/5;
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter: saturate(0.92) brightness(0.86);
+  }
+  .frame::after{
+    content:'';
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(20,16,12,0.05), rgba(20,16,12,0.4));
+    pointer-events:none;
+  }
+
+  /* ---------- Process ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .process-step{
+    padding: 0 36px;
+    text-align:center;
+    border-left: 1px solid var(--line-soft);
+  }
+  .process-step:first-child{ border-left:none; }
+  .process-step .num{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 18px;
+    display:block;
+    margin-bottom: 10px;
+  }
+  .process-step h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .process-step p{ color: var(--ink-soft); font-size: 14.5px; }
+
+  /* ---------- Packages ---------- */
+  .packages{ background: var(--bg-soft); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .pkg-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+  }
+  .pkg{
+    background: var(--bg-card);
+    border: 1px solid var(--line-soft);
+    padding: 0 34px 38px;
+    display:flex;
+    flex-direction:column;
+    overflow: hidden;
+  }
+  .pkg.featured{
+    border: 1px solid var(--gold);
+    transform: translateY(-14px);
+    box-shadow: 0 30px 60px -30px rgba(201,162,39,0.25);
+  }
+  .pkg-image{
+    margin: 0 -34px 28px;
+    width: calc(100% + 68px);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+  }
+  .pkg-image img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter: saturate(0.92) brightness(0.85);
+  }
+  .pkg-image::after{
+    content:'';
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(20,16,12,0) 45%, rgba(20,16,12,0.55) 100%);
+  }
+  .pkg-tag{
+    font-size: 11px; letter-spacing: 0.22em; text-transform:uppercase;
+    color: var(--gold); font-weight:500; margin-bottom: 12px;
+  }
+  .pkg h3{
+    font-family: var(--serif); font-weight: 500; font-style: italic;
+    font-size: 30px; margin-bottom: 14px;
+  }
+  .pkg-desc{
+    font-size: 14.5px; color: var(--ink-soft); margin-bottom: 24px;
+  }
+  .pkg ul{ display:flex; flex-direction:column; gap:11px; margin-bottom: 30px; flex-grow:1; }
+  .pkg li{
+    font-size: 14px; color: var(--ink-soft);
+    padding-left: 18px; position:relative;
+  }
+  .pkg li::before{
+    content:'—'; position:absolute; left:0; color: var(--gold); opacity:0.6;
+  }
+  .pkg .btn{ align-self: flex-start; }
+
+  /* ---------- Claim banner ---------- */
+  .claim{
+    text-align:center;
+    padding: 110px 0;
+    overflow: hidden;
+  }
+  .claim-bg{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+    filter: brightness(0.4) saturate(0.85);
+  }
+  .claim-overlay{
+    position:absolute; inset:0;
+    background: rgba(20,16,12,0.62);
+  }
+  .claim .wrap{ position:relative; z-index:1; }
+  .claim h2{ text-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+  .claim p.small{
+    color: var(--ink-faint); font-size: 14px; margin-bottom: 18px;
+    letter-spacing: 0.05em;
+  }
+  .claim h2{
+    font-family: var(--serif); font-weight: 400; font-style: italic;
+    font-size: clamp(26px, 4vw, 40px); line-height: 1.4; max-width: 880px; margin: 0 auto;
+    color: var(--ink-soft);
+  }
+  .claim h2 strong{ color: var(--ink); font-weight: 500; font-style: normal; }
+
+  /* ---------- Inquire ---------- */
+  .inquire{ background: var(--bg-soft); border-top: 1px solid var(--line-soft); }
+  .inquire-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 70px;
+  }
+  .inquire-copy h2{
+    font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4.2vw, 44px);
+    margin-top: 14px; line-height: 1.18;
+  }
+  .inquire-copy p{ color: var(--ink-soft); margin-top: 18px; font-size: 15.5px; max-width: 420px; }
+
+  .steps-mini{ margin-top: 40px; display:flex; flex-direction:column; gap: 18px; }
+  .steps-mini li{ display:flex; gap:16px; align-items:flex-start; }
+  .steps-mini .n{
+    font-family: var(--serif); font-style: italic; color: var(--gold);
+    font-size: 16px; width: 22px; flex-shrink:0;
+  }
+  .steps-mini b{ display:block; font-size: 14.5px; color: var(--ink); font-weight: 500; margin-bottom:2px; }
+  .steps-mini span{ font-size: 13.5px; color: var(--ink-faint); }
+
+  .contact-line{ margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--line-soft); }
+  .contact-line a{ display:block; font-size: 14.5px; color: var(--ink-soft); margin-bottom: 8px; transition: color 0.2s ease; }
+  .contact-line a:hover{ color: var(--gold-light); }
+
+  form{ display:flex; flex-direction:column; gap: 22px; }
+  .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .field{ display:flex; flex-direction:column; gap: 8px; }
+  .field label{
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform:uppercase;
+    color: var(--ink-faint); font-weight:500;
+  }
+  .field input, .field select, .field textarea{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15.5px;
+    padding: 10px 2px;
+    transition: border-color 0.25s ease;
+  }
+  .field select{
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0L5 6L10 0' fill='%23c9a227'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+  }
+  .field select option{ background: var(--bg); color: var(--ink); }
+  .field input::placeholder, .field textarea::placeholder{ color: var(--ink-faint); }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-bottom-color: var(--gold);
+  }
+  .field textarea{ resize: vertical; min-height: 90px; font-family: var(--sans); }
+
+  .form-note{ font-size: 12.5px; color: var(--ink-faint); margin-top: -6px; }
+  .submit-row{ margin-top: 8px; display:flex; align-items:center; gap: 18px; }
+
+  /* ---------- Footer ---------- */
+  footer{ padding: 60px 0 40px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap: 30px;
+    padding-bottom: 36px; border-bottom: 1px solid var(--line-soft);
+  }
+  .footer-logo{ font-family: var(--serif); font-style: italic; font-size: 28px; }
+  .footer-tag{ color: var(--ink-faint); font-size: 13.5px; margin-top: 8px; }
+  .footer-links{ display:flex; gap: 30px; }
+  .footer-links a{ font-size: 13px; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
+  .footer-links a:hover{ color: var(--gold-light); }
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    padding-top: 26px; font-size: 12.5px; color: var(--ink-faint);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px){
+    .wrap, .nav-inner{ padding: 0 22px; }
+    section{ padding: 90px 0; }
+    .story-grid{ grid-template-columns: 1fr; padding: 0 22px; }
+    .frame{ order:-1; aspect-ratio: 16/9; }
+    .process-grid{ grid-template-columns: 1fr; gap: 36px; }
+    .process-step{ border-left:none; padding:0; border-top: 1px solid var(--line-soft); padding-top: 30px; }
+    .process-step:first-child{ border-top:none; padding-top:0; }
+    .pkg-grid{ grid-template-columns: 1fr; }
+    .pkg.featured{ transform:none; }
+    .inquire-grid{ grid-template-columns: 1fr; gap: 50px; }
+    .form-row{ grid-template-columns: 1fr; }
+    .footer-grid{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="nav-inner">
+    <div class="nav-logo">Just Us</div>
+    <a href="#inquire" class="btn small filled">Inquire</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1649106331904-50bd8141e123?auto=format&fit=crop&w=1800&q=80" alt="" aria-hidden="true">
+  <div class="hero-overlay"></div>
+  <div class="glow"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Charlotte's Private Dining Experience</span>
+    <h1>Just Us</h1>
+    <p class="tagline">The restaurant comes to you — wherever your story lives.</p>
+    <div class="hero-actions">
+      <a href="#inquire" class="btn filled">Inquire for your date</a>
+      <a href="#experiences" class="btn">See the experiences</a>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- PREMISE -->
+<section class="premise center">
+  <div class="wrap statement">
+    <span class="eyebrow">The Premise</span>
+    <div class="divider"></div>
+    <h2>It's not a dinner.<br>It's an <em>experience</em>.</h2>
+  </div>
+</section>
+
+<!-- WHERE YOUR STORY IS -->
+<section id="experience">
+  <div class="story-grid">
+    <div>
+      <span class="eyebrow">Anywhere That Matters</span>
+      <h2>We go where your story is.</h2>
+      <p>A restaurant gives you a beautiful room. We bring the room to you — fully staged, fully staffed, set in the place that actually means something. Your home. Where you got engaged the first time. A quiet rooftop you've always loved. Charlotte's only fully mobile, fully staged fine dining experience.</p>
+      <ul class="location-types">
+        <li><span class="dot"></span><span><b>Your home or backyard</b> — the simplest, most intimate setting. No permissions needed but your own.</span></li>
+        <li><span class="dot"></span><span><b>A place that means something</b> — a vineyard, a lakeside spot, a park bench. We handle the logistics and the permits.</span></li>
+        <li><span class="dot"></span><span><b>Wherever you're staying</b> — a private residence, a suite, a rental. We come to you.</span></li>
+      </ul>
+    </div>
+    <div class="frame">
+      <img src="https://images.unsplash.com/photo-1529516222410-a269d812f320?auto=format&fit=crop&w=1200&q=80" alt="A candlelit table set with roses for two" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="center">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2>Every evening begins with a conversation.</h2>
+      <p>We run a personal consultation for every booking — learning the occasion, then building the order from there. It's where the experience is designed, and where it grows.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h3>Consult</h3>
+        <p>Learn the occasion, the couple, the vision.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h3>Build</h3>
+        <p>Construct a custom order, course by course.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h3>Elevate</h3>
+        <p>Open the door to add-ons and upgrades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="experiences" class="packages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Experiences</span>
+      <h2>Three ways to begin an evening.</h2>
+      <p>Every experience includes a private chef, a dedicated server, full table setting, and ambient lighting. Pricing and the full scope are confirmed together during your consultation.</p>
+    </div>
+
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-image">
+          <img src="https://images.unsplash.com/photo-1752888016122-cc0059408ce5?auto=format&fit=crop&w=800&q=80" alt="A candle and flowers set on a table at home" loading="lazy">
+        </div>
+        <div class="pkg-tag">At Home</div>
+        <h3>The Residence</h3>
+        <p class="pkg-desc">Your own home or backyard, fully transformed for the evening — the simplest, most intimate setting.</p>
+        <ul>
+          <li>Private chef &amp; dedicated server</li>
+          <li>Four-hour evening</li>
+          <li>Custom multi-course menu</li>
+          <li>Candlelit table setting</li>
+          <li>Custom playlist, named &amp; kept</li>
+        </ul>
+        <a href="#inquire" class="btn small">Inquire</a>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-image">
+          <img src="https://images.unsplash.com/photo-1527359443443-84a48aec73d2?auto=format&fit=crop&w=800&q=80" alt="An elegant outdoor table set beneath string lights" loading="lazy">
+        </div>
+        <div class="pkg-tag">Our Signature Evening</div>
+        <h3>The Place</h3>
+        <p class="pkg-desc">A location that means something to you — scouted, assessed, and permitted, then fully staged.</p>
+        <ul>
+          <li>Everything in The Residence</li>
+          <li>A meaningful location of your choosing</li>
+          <li>Roses &amp; full setting design</li>
+          <li>Live music or custom playlist</li>
+          <li>Keepsake printed menu</li>
+        </ul>
+        <a href="#inquire" class="btn small filled">Inquire</a>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-image">
+          <img src="https://images.unsplash.com/photo-1546567075-d7113bee3c4a?auto=format&fit=crop&w=800&q=80" alt="Champagne flutes prepared for a toast" loading="lazy">
+        </div>
+        <div class="pkg-tag">Fully Bespoke</div>
+        <h3>The Moment</h3>
+        <p class="pkg-desc">A custom-scouted location with proposal coordination — built entirely around your exact moment.</p>
+        <ul>
+          <li>Everything in The Place</li>
+          <li>Custom site visit &amp; scouting</li>
+          <li>Proposal coordination on-site</li>
+          <li>Champagne service for the toast</li>
+          <li>Photographer referral partner</li>
+        </ul>
+        <a href="#inquire" class="btn small">Inquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAIM -->
+<section class="claim">
+  <img class="claim-bg" src="https://images.unsplash.com/photo-1776091215662-091cff6d9cb7?auto=format&fit=crop&w=1800&q=80" alt="" aria-hidden="true">
+  <div class="claim-overlay"></div>
+  <div class="wrap">
+    <p class="small">CHARLOTTE, NC</p>
+    <h2>Charlotte has restaurants. Charlotte has caterers.<br><strong>Charlotte doesn't have this.</strong></h2>
+  </div>
+</section>
+
+<!-- INQUIRE -->
+<section id="inquire" class="inquire">
+  <div class="wrap inquire-grid">
+    <div class="inquire-copy">
+      <span class="eyebrow">Begin</span>
+      <h2>Tell us the occasion.</h2>
+      <p>Every booking starts with a short conversation, not an instant calendar slot — we want to get the evening right. Send the details below and we'll follow up within 24 hours to schedule your consultation.</p>
+
+      <ul class="steps-mini">
+        <li><span class="n">01</span><div><b>Inquiry</b><span>You share the occasion, the date, and the setting you have in mind.</span></div></li>
+        <li><span class="n">02</span><div><b>Consultation</b><span>A short call to design the evening together.</span></div></li>
+        <li><span class="n">03</span><div><b>Proposal</b><span>A custom quote, ready to confirm.</span></div></li>
+      </ul>
+
+      <div class="contact-line">
+        <a href="mailto:hello@justuscharlotte.com">hello@justuscharlotte.com</a>
+        <a href="tel:+17045550123">(704) 555-0123</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">@justus.charlotte</a>
+      </div>
+    </div>
+
+    <div>
+      <!--
+        FORM SETUP — read before publishing:
+        This form uses FormSubmit.co to send inquiries straight to your email, with no backend required.
+        1. Replace YOUR_EMAIL_HERE below (in the form action) with your real email address.
+        2. The first time someone submits, FormSubmit will email YOU a confirmation link — click it once to activate.
+        3. Everything after that is automatic: a submission = an email in your inbox.
+      -->
+      <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+        <input type="hidden" name="_subject" value="New Just Us Inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" name="Name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="Email" placeholder="you@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" name="Phone" placeholder="(704) 000-0000" required>
+          </div>
+          <div class="field">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="Occasion" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Proposal</option>
+              <option>Anniversary</option>
+              <option>New home</option>
+              <option>Expecting / new baby</option>
+              <option>Pre-wedding dinner</option>
+              <option>First date</option>
+              <option>Other celebration</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="date">Preferred date</label>
+            <input id="date" type="date" name="Preferred Date">
+          </div>
+          <div class="field">
+            <label for="location">Setting</label>
+            <select id="location" name="Setting">
+              <option value="" disabled selected>Select one</option>
+              <option>My home</option>
+              <option>A meaningful place</option>
+              <option>Help me choose</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Tell us about the evening</label>
+          <textarea id="message" name="Message" placeholder="The occasion, the setting you're picturing, anything that matters to you..."></textarea>
+        </div>
+
+        <p class="form-note">We respond to every inquiry within 24 hours.</p>
+
+        <div class="submit-row">
+          <button type="submit" class="btn filled">Send inquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Just Us</div>
+        <p class="footer-tag">Charlotte's private dining experience.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#experience">Experience</a>
+        <a href="#experiences">Packages</a>
+        <a href="#inquire">Inquire</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Just Us Private Dining LLC — Charlotte, NC</span>
+      <span>justuscharlotte.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal header after scrolling past the hero, add solid background past that point.
+  const header = document.getElementById('site-header');
+  const hero = document.querySelector('.hero');
+  const heroHeight = () => hero.offsetHeight;
+
+  function onScroll(){
+    const y = window.scrollY;
+    if (y > heroHeight() * 0.6) {
+      header.classList.add('visible');
+    } else {
+      header.classList.remove('visible');
+    }
+    if (y > heroHeight() * 0.9) {
+      header.classList.add('solid');
+    } else {
+      header.classList.remove('solid');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>
