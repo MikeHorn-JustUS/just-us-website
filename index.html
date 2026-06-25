@@ -180,6 +180,16 @@
   }
   .hero-inner{ position:relative; z-index:1; max-width: 760px; }
   .hero h1, .hero .tagline, .hero .eyebrow{ text-shadow: 0 4px 30px rgba(0,0,0,0.45); }
+  .hero-coming-soon{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 20px);
+    color: var(--gold-light);
+    letter-spacing: 0.18em;
+    display: block;
+    margin-bottom: 18px;
+    opacity: 0.9;
+  }
   .hero .eyebrow{ display:block; margin-bottom: 22px; }
   .hero h1{
     font-family: var(--serif);
@@ -516,7 +526,7 @@
 <header id="site-header">
   <div class="nav-inner">
     <div class="nav-logo">Just Us</div>
-    <a href="#inquire" class="btn small filled">Inquire</a>
+    <a href="#inquire" class="btn small filled">Join the Waitlist</a>
   </div>
 </header>
 
@@ -526,11 +536,12 @@
   <div class="hero-overlay"></div>
   <div class="glow"></div>
   <div class="hero-inner">
+    <span class="hero-coming-soon">Coming Soon</span>
     <span class="eyebrow">Charlotte's Private Dining Experience</span>
     <h1>Just Us</h1>
     <p class="tagline">The restaurant comes to you — wherever your story lives.</p>
     <div class="hero-actions">
-      <a href="#inquire" class="btn filled">Inquire for your date</a>
+      <a href="#inquire" class="btn filled">Join the Waitlist</a>
       <a href="#experiences" class="btn">See the experiences</a>
     </div>
   </div>
@@ -571,23 +582,23 @@
     <div class="section-head">
       <span class="eyebrow">How It Works</span>
       <h2>Every evening begins with a conversation.</h2>
-      <p>We run a personal consultation for every booking — learning the occasion, then building the order from there. It's where the experience is designed, and where it grows.</p>
+      <p>We listen first — to the occasion, the couple, the vision — and build the rest around what matters most to you.</p>
     </div>
     <div class="process-grid">
       <div class="process-step">
         <span class="num">01</span>
-        <h3>Consult</h3>
-        <p>Learn the occasion, the couple, the vision.</p>
+        <h3>A Conversation</h3>
+        <p>Tell us the occasion, the setting, the story.</p>
       </div>
       <div class="process-step">
         <span class="num">02</span>
-        <h3>Build</h3>
-        <p>Construct a custom order, course by course.</p>
+        <h3>An Idea</h3>
+        <p>We design the evening entirely around what matters to you.</p>
       </div>
       <div class="process-step">
         <span class="num">03</span>
-        <h3>Elevate</h3>
-        <p>Open the door to add-ons and upgrades.</p>
+        <h3>A Memory</h3>
+        <p>An experience crafted to last a lifetime.</p>
       </div>
     </div>
   </div>
@@ -599,7 +610,7 @@
     <div class="section-head">
       <span class="eyebrow">The Experiences</span>
       <h2>Three ways to begin an evening.</h2>
-      <p>Every experience includes a private chef, a dedicated server, full table setting, and ambient lighting. Pricing and the full scope are confirmed together during your consultation.</p>
+      <p>Every experience includes a private chef, a dedicated server, full table setting, and ambient lighting. We worry about every detail so that you don't have to.</p>
     </div>
 
     <div class="pkg-grid">
@@ -612,7 +623,7 @@
         <p class="pkg-desc">Your own home or backyard, fully transformed for the evening — the simplest, most intimate setting.</p>
         <ul>
           <li>Private chef &amp; dedicated server</li>
-          <li>Four-hour evening</li>
+          <li>A full evening, from setup to service</li>
           <li>Custom multi-course menu</li>
           <li>Candlelit table setting</li>
           <li>Custom playlist, named &amp; kept</li>
@@ -667,37 +678,30 @@
   </div>
 </section>
 
-<!-- INQUIRE -->
+<!-- WAITLIST -->
 <section id="inquire" class="inquire">
   <div class="wrap inquire-grid">
     <div class="inquire-copy">
-      <span class="eyebrow">Begin</span>
-      <h2>Tell us the occasion.</h2>
-      <p>Every booking starts with a short conversation, not an instant calendar slot — we want to get the evening right. Send the details below and we'll follow up within 24 hours to schedule your consultation.</p>
+      <span class="eyebrow">Join the Waitlist</span>
+      <h2>Make your perfect evening a reality.</h2>
+      <p>Just Us is accepting a limited number of founding bookings in Charlotte. Share your details and we'll reach out personally to begin planning your evening — before we open to the public.</p>
 
       <ul class="steps-mini">
-        <li><span class="n">01</span><div><b>Inquiry</b><span>You share the occasion, the date, and the setting you have in mind.</span></div></li>
-        <li><span class="n">02</span><div><b>Consultation</b><span>A short call to design the evening together.</span></div></li>
-        <li><span class="n">03</span><div><b>Proposal</b><span>A custom quote, ready to confirm.</span></div></li>
+        <li><span class="n">01</span><div><b>Reserve Your Spot</b><span>Tell us the occasion and the date you have in mind.</span></div></li>
+        <li><span class="n">02</span><div><b>Conversation</b><span>A conversation that brings your idea to life.</span></div></li>
+        <li><span class="n">03</span><div><b>Your Evening</b><span>Leave every detail to us.</span></div></li>
       </ul>
 
       <div class="contact-line">
         <a href="mailto:hello@justuscharlotte.com">hello@justuscharlotte.com</a>
-        <a href="tel:+17045550123">(704) 555-0123</a>
+        <a href="tel:+18032075773">(803) 207-5773</a>
         <a href="https://instagram.com" target="_blank" rel="noopener">@justus.charlotte</a>
       </div>
     </div>
 
     <div>
-      <!--
-        FORM SETUP — read before publishing:
-        This form uses FormSubmit.co to send inquiries straight to your email, with no backend required.
-        1. Replace YOUR_EMAIL_HERE below (in the form action) with your real email address.
-        2. The first time someone submits, FormSubmit will email YOU a confirmation link — click it once to activate.
-        3. Everything after that is automatic: a submission = an email in your inbox.
-      -->
       <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
-        <input type="hidden" name="_subject" value="New Just Us Inquiry">
+        <input type="hidden" name="_subject" value="New Just Us Waitlist Request">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none">
 
@@ -715,7 +719,7 @@
         <div class="form-row">
           <div class="field">
             <label for="phone">Phone</label>
-            <input id="phone" type="tel" name="Phone" placeholder="(704) 000-0000" required>
+            <input id="phone" type="tel" name="Phone" placeholder="(803) 000-0000" required>
           </div>
           <div class="field">
             <label for="occasion">Occasion</label>
@@ -749,14 +753,14 @@
         </div>
 
         <div class="field">
-          <label for="message">Tell us about the evening</label>
+          <label for="message">Tell us about your evening</label>
           <textarea id="message" name="Message" placeholder="The occasion, the setting you're picturing, anything that matters to you..."></textarea>
         </div>
 
-        <p class="form-note">We respond to every inquiry within 24 hours.</p>
+        <p class="form-note">Every submission is personal — we respond to each one within 24 hours.</p>
 
         <div class="submit-row">
-          <button type="submit" class="btn filled">Send inquiry</button>
+          <button type="submit" class="btn filled">Join the Waitlist</button>
         </div>
       </form>
     </div>
